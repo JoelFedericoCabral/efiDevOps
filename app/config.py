@@ -1,0 +1,12 @@
+import os
+
+class Settings:
+    # Configuración general
+    DEBUG = True
+
+    # Configuración de SQLAlchemy
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+
+
