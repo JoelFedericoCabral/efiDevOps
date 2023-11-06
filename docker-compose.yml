@@ -4,16 +4,19 @@ services:
   api:
     container_name: MiniBlog
     build: .
+    volumes:
+      - .:/app
     ports:
       - '5000:5000'
     environment:
+      - JWT_SECRET_KEY=sadasdsadasd
       - DATABASE_URL=mysql+pymysql://miniblog:miniblog@db/appblog
     depends_on:
       - db
 
   db:
     image: mysql:5.7
-    container_name: Mysql
+    container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: rootpass
       MYSQL_DATABASE: appblog
