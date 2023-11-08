@@ -19,14 +19,8 @@ jwt = JWTManager(app)
 def index():
     return jsonify(message='Hola, bienvenido a la efi de DevOps')
 
-from app.views import users
+from app.views import users, posts, comments
 
 app.register_blueprint(users.bp, url_prefix='/users')
-
-
-
-
-
-
-
-
+app.register_blueprint(posts.bp, url_prefix='/posts')
+app.register_blueprint(comments.bp, url_prefix='/comments')
