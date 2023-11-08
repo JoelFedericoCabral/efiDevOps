@@ -17,7 +17,7 @@ jwt = JWTManager(app)
 # Endpoint
 @app.route('/')
 def index():
-    return jsonify(message='Hola, bienvenido a la efi de DevOps')
+    return jsonify(message='Hola, bienvenido a mi EFI')
 
 from app.views import users, posts, comments
 
