@@ -3,7 +3,7 @@ from sqlalchemy import DateTime
 from werkzeug.security import generate_password_hash, check_password_hash
 from app import db
 
-# User model
+# Modelo de usuario
 class User(db.Model):
     __tablename__ = 'users'
 
@@ -23,7 +23,7 @@ class User(db.Model):
     def __repr__(self):
         return f'<User {self.username}>'
 
-# Post model
+# Modelo de post
 class Post(db.Model):
     __tablename__ = 'posts'
 
@@ -38,7 +38,7 @@ class Post(db.Model):
     def __repr__(self):
         return f'<Post {self.title}>'
 
-# Comment model
+# Modelo de comentario 
 class Comment(db.Model):
     __tablename__ = 'comments'
 

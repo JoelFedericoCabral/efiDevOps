@@ -4,13 +4,21 @@ Bienvenido a la API Miniblog, una plataforma diseñada para permitir a los usuar
 
 ## Con esta API podras:
 
-- **Registrarte y Autenticarte:** Crea tu cuenta y accede de forma segura para comenzar a interactuar con la plataforma.
+## Registrarte y Autenticarte:##  
 
-- **Publicar Contenido:** Comparte tus ideas y pensamientos mediante publicaciones que pueden ser vistas y comentadas por otros usuarios.
+Crea tu cuenta y accede de forma segura para comenzar a interactuar con la plataforma.
 
-- **Interactuar con la Comunidad:** Comenta las publicaciones de otros usuarios, participa en discusiones y comparte tus opiniones.
+## Publicar Contenido: ## 
 
-- **Seguridad y Privacidad:** Mantenemos tus datos seguros y respetamos tu privacidad.
+Comparte tus ideas y pensamientos mediante publicaciones que pueden ser vistas y comentadas por otros usuarios.
+
+## Interactuar con la Comunidad: ## 
+
+Comenta las publicaciones de otros usuarios, participa en discusiones y comparte tus opiniones.
+
+## Seguridad y Privacidad:## 
+
+Mantenemos tus datos seguros y respetamos tu privacidad.
 
 # Tutorial
 
@@ -38,4 +46,3 @@ Puedes acceder a la API a través de las rutas definidas en tu aplicación Flask
 Asegúrate de tener instalados los siguientes componentes antes de ejecutar la aplicación:
 
 [DOCKER](https://www.docker.com/)
-  

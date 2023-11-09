@@ -13,7 +13,7 @@ bp = Blueprint('comments', __name__)
 class CommentAPI(MethodView):
 
     def get(self, comment_id):
-        # Return a single comment
+        # Devolver un solo comentario
         comment = Comment.query.get(comment_id)
         if not comment:
             return jsonify(error=f'Comment {comment_id} not found.'), 404
@@ -21,7 +21,8 @@ class CommentAPI(MethodView):
 
     @jwt_required()
     def post(self):
-        # Create a new comment for a specific post
+        # Crear un nuevo comentario para una publicación específica.
+
         comment_data = request.json
         if not comment_data:
             return jsonify(error=f'Not input data provided.'), 404
@@ -31,7 +32,7 @@ class CommentAPI(MethodView):
             new_comment.user_id = current_user.id
             db.session.add(new_comment)
             db.session.commit()
-            return comment_schema.dump(new_comment), 201 # 201 Created 
+            return comment_schema.dump(new_comment), 201 
         except ValidationError as err:
             return jsonify(err.messages), 400
         except IntegrityError:
@@ -40,12 +41,12 @@ class CommentAPI(MethodView):
 
     @jwt_required()
     def delete(self, comment_id):
-        # Delete a single comment
+        # Eliminar un solo comentario
         comment = Comment.query.get(comment_id)
         if not comment:
             return jsonify(error=f'Comment {comment_id} not found.'), 404
 
-        # Check if is owner
+        # Verifica si es dueño
         if comment.user_id != current_user.id:
             return jsonify(error='Forbidden'), 403
 
@@ -56,7 +57,7 @@ class CommentAPI(MethodView):
 
     @jwt_required()
     def put(self, comment_id):
-        # Update a single comment
+        # Actualizar un solo comentario
         comment_data = request.json
         if not comment_data:
             return jsonify(error='No input data provided.'), 400
@@ -65,7 +66,7 @@ class CommentAPI(MethodView):
         if not comment:
             return jsonify(error=f'Comment {comment_id} not found.'), 404
 
-        # Check if is owner
+        # Verifica si es dueño
         if comment.user_id != current_user.id:
             return jsonify(error='Forbidden'), 403
 

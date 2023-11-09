@@ -19,7 +19,7 @@ class PostAPI(MethodView):
 
     @jwt_required()
     def post(self):
-        ''' Create a new post '''
+        # Crear nuevo post
         print('end1')
         post_data = request.json
         if not post_data:
@@ -38,12 +38,12 @@ class PostAPI(MethodView):
 
     @jwt_required()
     def delete(self, post_id):
-        ''' Delete a single post '''
+        # Eliminar un post
         post = Post.query.get(post_id)
         if not post:
             return jsonify(error=f'Post {post_id} not found.'), 404
 
-        # Check if is owner
+        # Verifica si es dueño
         if post.user_id != current_user.id:
             return jsonify(error='Forbidden'), 403
 
@@ -54,7 +54,7 @@ class PostAPI(MethodView):
 
     @jwt_required()
     def put(self, post_id):
-        ''' Update a single post '''
+        # Actualizar una sola publicación
         post_data = request.json
         if not post_data:
             return jsonify(error='No input data provided.'), 400
@@ -63,7 +63,7 @@ class PostAPI(MethodView):
         if not post:
             return jsonify(error=f'Post {post_id} not found.'), 404
 
-        # Check if is owner
+        # Verifica si eres dueño
         if post.user_id != current_user.id:
             return jsonify(error='Forbidden'), 403
 
