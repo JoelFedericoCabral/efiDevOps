@@ -2,30 +2,30 @@ version: '3.8'
 
 services:
   api:
-    container_name: MiniBlog
-    build: .
+    container_name: MiniBlog  # Nombre del contenedor para el servicio "api".
+    build: .  # La imagen del servicio se construye a partir del contexto actual (la ubicación actual de tu proyecto).
     volumes:
-      - .:/app
+      - .:/app  # Mapeo de volúmenes, monta el directorio actual en el contenedor en /app.
     ports:
-      - '5000:5000'
+      - '5000:5000'  # Mapeo de puertos (puerto del host: puerto del contenedor).
     environment:
-      - JWT_SECRET_KEY=sadasdsadasd
-      - DATABASE_URL=mysql+pymysql://miniblog:miniblog@db/appblog
+      - JWT_SECRET_KEY=sadasdsadasd  # Variable de entorno para la clave secreta JWT.
+      - DATABASE_URL=mysql+pymysql://miniblog:miniblog@db/appblog  # Variable de entorno para la URL de la base de datos.
     depends_on:
-      - db
+      - db  # El servicio "api" depende del servicio "db", lo que significa que "db" se inicia antes de "api".
 
   db:
-    image: mysql:5.7
-    container_name: mysql
+    image: mysql:5.7  # Utiliza la imagen de MySQL versión 5.7.
+    container_name: mysql  # Nombre del contenedor para el servicio "db".
     environment:
-      MYSQL_ROOT_PASSWORD: rootpass
-      MYSQL_DATABASE: appblog
-      MYSQL_USER: miniblog
-      MYSQL_PASSWORD: miniblog
+      MYSQL_ROOT_PASSWORD: rootpass  # Contraseña del usuario root de MySQL.
+      MYSQL_DATABASE: appblog  # Nombre de la base de datos a crear.
+      MYSQL_USER: miniblog  # Nombre de usuario de la base de datos.
+      MYSQL_PASSWORD: miniblog  # Contraseña del usuario de la base de datos.
     ports:
-      - '3306:3306'
+      - '3306:3306'  # Mapeo de puertos (puerto del host: puerto del contenedor) para MySQL.
     volumes:
-      - mysql-data:/var/lib/mysql
+      - mysql-data:/var/lib/mysql  # Mapeo de volumen para persistencia de datos de MySQL.
 
 volumes:
-  mysql-data:
+  mysql-data:  # Definición de un volumen llamado "mysql-data" que se utiliza para persistir los datos de MySQL.
